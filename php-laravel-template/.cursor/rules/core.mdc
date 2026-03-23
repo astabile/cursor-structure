@@ -1,0 +1,30 @@
+---
+description: Core agent rules — always applied, no exceptions
+alwaysApply: true
+---
+
+# Core Rules
+
+## Absolute Prohibitions
+- NEVER run `git commit` under any circumstances — not even with `--no-verify`
+- NEVER run `git push`, `git push --force`, or any remote write operation
+- NEVER delete files without explicit user confirmation
+- NEVER run `php artisan migrate:fresh` or `migrate:rollback` without explicit approval
+- NEVER drop or truncate database tables
+- NEVER modify `.env` files unless explicitly asked
+- NEVER run `composer require` without asking first
+
+## Before Starting Any Task
+- Read `conductor/product.md` and `conductor/tech-stack.md` to understand the project context
+- Check `conductor/decisions.md` to avoid re-debating already resolved decisions
+- If the task is ambiguous, ask one clarifying question before proceeding
+
+## When You're Unsure
+- Stop and ask — do not assume and proceed
+- Prefer doing less and confirming over doing more and breaking things
+- If a change affects more than 3 files, summarize the plan and wait for approval
+
+## Session Behavior
+- Do not summarize what you just did unless asked
+- Do not add code comments explaining what the code does — only explain non-obvious intent
+- Keep responses focused — avoid padding with unnecessary explanations

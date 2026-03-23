@@ -1,0 +1,61 @@
+---
+description: Code conventions for MERN + TypeScript projects
+alwaysApply: true
+---
+
+# Code Conventions — MERN + TypeScript
+
+## General
+- TypeScript strict mode — no `any`, use proper types or generics
+- Use `const` by default, `let` only when reassignment is needed
+- Prefer `async/await` over `.then()` chains
+- Always handle errors explicitly — no silent catches
+- Keep functions small and single-purpose
+
+## Naming
+- Components: `PascalCase` (e.g. `UserCard.tsx`)
+- Hooks: `camelCase` prefixed with `use` (e.g. `useAuthUser.ts`)
+- Utils / helpers: `camelCase` (e.g. `formatDate.ts`)
+- Constants: `SCREAMING_SNAKE_CASE`
+- Types / Interfaces: `PascalCase`, prefix interfaces with `I` only if ambiguous
+- MongoDB models: singular `PascalCase` (e.g. `User`, `Listing`)
+- API routes: `kebab-case` (e.g. `/api/bus-listings`)
+
+## File & Folder Structure
+```
+src/
+├── components/       # Reusable React components
+├── pages/            # Route-level components
+├── hooks/            # Custom React hooks
+├── services/         # API call functions (axios/fetch wrappers)
+├── models/           # Mongoose models
+├── routes/           # Express route handlers
+├── controllers/      # Business logic, called by routes
+├── middleware/        # Express middleware
+├── utils/            # Pure utility functions
+├── types/            # Shared TypeScript types/interfaces
+└── config/           # Environment config, constants
+```
+
+## React
+- Functional components only — no class components
+- Props via TypeScript interfaces, defined above the component
+- Avoid prop drilling beyond 2 levels — use context or state manager
+- Co-locate styles with components when using CSS modules
+
+## Node / Express
+- Controllers handle logic, routes just wire them up
+- Validate all inputs at the route level (zod or express-validator)
+- Return consistent API response shapes:
+```ts
+{ success: boolean, data?: T, error?: string, message?: string }
+```
+
+## MongoDB / Mongoose
+- Always define schemas with explicit types
+- Use `lean()` for read-only queries
+- Index fields used in frequent queries
+
+## Imports
+- Use absolute imports via `tsconfig` path aliases (e.g. `@/components/Button`)
+- Group imports: 1) Node built-ins, 2) External packages, 3) Internal modules

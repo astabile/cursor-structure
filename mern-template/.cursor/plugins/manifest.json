@@ -1,0 +1,37 @@
+{
+  "name": "MERN Project Skills",
+  "version": "1.0.0",
+  "description": "Project-specific skills for MERN + TypeScript projects",
+  "skills": [
+    {
+      "id": "create-component",
+      "name": "Create React Component",
+      "path": "../skills/create-component/SKILL.md",
+      "trigger": "create component, new component, scaffold component"
+    },
+    {
+      "id": "create-api-route",
+      "name": "Create API Route",
+      "path": "../skills/create-api-route/SKILL.md",
+      "trigger": "create route, new endpoint, new API, scaffold route"
+    },
+    {
+      "id": "create-mongoose-model",
+      "name": "Create Mongoose Model",
+      "path": "../skills/create-mongoose-model/SKILL.md",
+      "trigger": "create model, new schema, new collection, scaffold model"
+    },
+    {
+      "id": "code-review",
+      "name": "Code Review",
+      "path": "../skills/code-review/SKILL.md",
+      "trigger": "review this, check this file, review before commit, code review"
+    }
+  ],
+  "rules": [
+    { "id": "core",         "path": "../rules/core.mdc" },
+    { "id": "git",          "path": "../rules/git.mdc" },
+    { "id": "conventions",  "path": "../rules/conventions.mdc" },
+    { "id": "architecture", "path": "../rules/architecture.mdc" }
+  ]
+}

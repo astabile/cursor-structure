@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${PROJECT_ROOT}"
+      ]
+    },
+    "mysql": {
+      "command": "npx",
+      "args": ["-y", "@benborla29/mcp-server-mysql"],
+      "env": {
+        "MYSQL_HOST": "${DB_HOST}",
+        "MYSQL_PORT": "${DB_PORT}",
+        "MYSQL_USER": "${DB_USERNAME}",
+        "MYSQL_PASS": "${DB_PASSWORD}",
+        "MYSQL_DB":   "${DB_DATABASE}"
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+---
+description: Architecture reference — fill this in per project
+alwaysApply: true
+---
+
+# Project Architecture
+
+> ⚠️ This file is a template. Fill it in when starting a new project.
+
+## Project Overview
+<!-- One paragraph describing what this project does -->
+
+## Tech Stack
+<!-- List exact versions being used -->
+- Runtime: Node.js vX.X
+- Framework: Express vX.X
+- Frontend: React vX.X + Vite / Next.js vX.X
+- Database: MongoDB vX.X (Mongoose vX.X)
+- Language: TypeScript vX.X
+- Auth: (e.g. JWT / NextAuth / Passport)
+- Hosting: (e.g. AWS / Vercel / DigitalOcean)
+
+## Environments
+| Env | Branch | URL |
+|-----|--------|-----|
+| Production | `main` | https://... |
+| Staging | `staging` | https://... |
+| Dev | `dev` | http://localhost:3000 |
+
+## Key Architectural Decisions
+<!-- Reference conductor/decisions.md for full log -->
+- (e.g. "REST API only — no GraphQL")
+- (e.g. "Mongoose over Prisma due to schema flexibility")
+- (e.g. "No Redux — using React Context + React Query")
+
+## External Services & Integrations
+<!-- List third-party APIs, SDKs, or services in use -->
+- (e.g. AWS S3 — image storage)
+- (e.g. SendGrid — transactional email)
+- (e.g. Stripe — payments)
+
+## Performance & Scalability Notes
+<!-- Anything the agent should be aware of to avoid regressions -->
+- (e.g. "Search uses Atlas full-text — don't replace with naive filter")
+- (e.g. "Image pipeline runs on Lambda — don't move to request lifecycle")
+
+## What NOT to Touch Without Discussion
+<!-- Sections that are sensitive or off-limits -->
+- (e.g. "Auth middleware — changes require explicit approval")
+- (e.g. "Database seed scripts — do not modify")

@@ -1,0 +1,43 @@
+---
+description: Git workflow rules for MERN projects
+alwaysApply: true
+---
+
+# Git Workflow
+
+## Branch Strategy
+- `main` — production only, never commit directly
+- `staging` — pre-production, QA environment
+- `dev` — active development base branch
+- Feature branches: `feature/short-description`
+- Bug fixes: `fix/short-description`
+- Hotfixes: `hotfix/short-description`
+
+## What You CAN Do
+- `git status` — always safe
+- `git diff` — always safe
+- `git log` — always safe
+- `git checkout -b branch-name` — safe, but confirm branch name first
+- `git stash` — safe, but notify the user
+
+## What You CANNOT Do
+- `git commit` — user commits manually, always
+- `git push` — user pushes manually, always
+- `git merge` — ask user to confirm before suggesting
+- `git rebase` — never suggest without explicit request
+- `git reset --hard` — never, unless user explicitly asks with full awareness
+
+## Rollback Protocol
+If something breaks and rollback is needed:
+1. Run `git status` and `git diff` and show the user
+2. Suggest the rollback command — do NOT run it
+3. Wait for user confirmation before any destructive action
+
+## Commit Message Format (for suggestions only)
+```
+type(scope): short description
+
+- bullet of what changed
+- bullet of what changed
+```
+Types: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`

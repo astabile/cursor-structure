@@ -1,0 +1,37 @@
+{
+  "name": "PHP/Laravel Project Skills",
+  "version": "1.0.0",
+  "description": "Project-specific skills for PHP/Laravel projects",
+  "skills": [
+    {
+      "id": "create-controller",
+      "name": "Create Laravel Controller",
+      "path": "../skills/create-controller/SKILL.md",
+      "trigger": "create controller, new controller, scaffold resource, new endpoint"
+    },
+    {
+      "id": "create-migration",
+      "name": "Create Migration",
+      "path": "../skills/create-migration/SKILL.md",
+      "trigger": "create migration, new table, add column, modify schema"
+    },
+    {
+      "id": "create-api-resource",
+      "name": "Create API Resource",
+      "path": "../skills/create-api-resource/SKILL.md",
+      "trigger": "create resource, new API resource, JSON transformer, response formatter"
+    },
+    {
+      "id": "code-review",
+      "name": "Code Review",
+      "path": "../skills/code-review/SKILL.md",
+      "trigger": "review this, check this file, review before commit, code review"
+    }
+  ],
+  "rules": [
+    { "id": "core",         "path": "../rules/core.mdc" },
+    { "id": "git",          "path": "../rules/git.mdc" },
+    { "id": "conventions",  "path": "../rules/conventions.mdc" },
+    { "id": "architecture", "path": "../rules/architecture.mdc" }
+  ]
+}

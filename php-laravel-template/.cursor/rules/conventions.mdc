@@ -1,0 +1,84 @@
+---
+description: Code conventions for PHP/Laravel projects
+alwaysApply: true
+---
+
+# Code Conventions — PHP / Laravel
+
+## General
+- PHP 8.1+ — use typed properties, enums, match expressions, readonly where appropriate
+- Strict types on every file: `declare(strict_types=1);`
+- Follow PSR-12 coding standard
+- Keep methods small and single-purpose
+- Avoid magic — prefer explicit over clever
+
+## Naming
+- Controllers: `PascalCase`, singular, suffixed (e.g. `UserController`)
+- Models: `PascalCase`, singular (e.g. `User`, `BusListing`)
+- Migrations: `snake_case` with timestamp prefix (Laravel default)
+- Routes: `kebab-case` (e.g. `/bus-listings/{id}`)
+- Blade templates: `kebab-case` (e.g. `bus-listing-card.blade.php`)
+- Jobs / Events / Listeners: `PascalCase` with descriptive suffix (e.g. `SendWelcomeEmail`)
+- Constants: `SCREAMING_SNAKE_CASE`
+
+## File & Folder Structure (Laravel conventions)
+```
+app/
+├── Http/
+│   ├── Controllers/      # Thin controllers — delegate to services
+│   ├── Middleware/
+│   ├── Requests/         # Form Request validation classes
+│   └── Resources/        # API Resources (JSON transformers)
+├── Models/               # Eloquent models
+├── Services/             # Business logic layer
+├── Repositories/         # DB query abstraction (if used)
+├── Jobs/                 # Queued jobs
+├── Events/ + Listeners/
+└── Enums/                # PHP 8.1 enums
+
+resources/
+├── views/                # Blade templates
+└── js/ + css/            # Frontend assets
+
+routes/
+├── web.php
+├── api.php
+└── console.php
+```
+
+## Controllers
+- Thin controllers — no business logic inside
+- Delegate to Service classes
+- Use Form Requests for validation
+- Use API Resources for response transformation
+
+## Models
+- Define `$fillable` or `$guarded` explicitly
+- Use relationships instead of raw queries where possible
+- Scope complex queries into named scopes
+- Never put business logic in models
+
+## API Responses
+Return consistent shapes via API Resources:
+```php
+return response()->json([
+    'success' => true,
+    'data'    => new UserResource($user),
+    'message' => 'User retrieved successfully',
+]);
+```
+
+## Database
+- Always use migrations — never modify DB schema manually
+- Use seeders for dev/test data
+- Index foreign keys and frequently queried columns
+- Use `unsignedBigInteger` for foreign keys
+
+## Validation
+- Always use Form Request classes for validation
+- Never validate inside controllers directly
+- Return 422 with structured error messages
+
+## Imports / Namespaces
+- Use full namespaces, not aliases unless standard (e.g. `Carbon`)
+- Group use statements: 1) PHP built-ins, 2) Laravel, 3) App classes

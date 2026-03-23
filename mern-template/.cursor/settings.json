@@ -1,0 +1,28 @@
+{
+  "agent": {
+    "allowedTools": [
+      "read_file",
+      "write_file",
+      "edit_file",
+      "search_files",
+      "list_directory",
+      "run_terminal_command"
+    ],
+    "disallowedCommands": [
+      "git commit",
+      "git push",
+      "git push --force",
+      "git reset --hard",
+      "git rebase",
+      "rm -rf",
+      "drop collection",
+      "db.dropDatabase"
+    ]
+  },
+  "contextFiles": [
+    "conductor/product.md",
+    "conductor/tech-stack.md",
+    "conductor/workflow.md",
+    "conductor/decisions.md"
+  ]
+}

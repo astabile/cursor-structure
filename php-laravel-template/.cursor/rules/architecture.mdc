@@ -1,0 +1,53 @@
+---
+description: Architecture reference — fill this in per project
+alwaysApply: true
+---
+
+# Project Architecture
+
+> ⚠️ This file is a template. Fill it in when starting a new project.
+
+## Project Overview
+<!-- One paragraph describing what this project does -->
+
+## Tech Stack
+<!-- List exact versions being used -->
+- PHP: X.X
+- Laravel: X.X
+- Database: MySQL X.X / PostgreSQL X.X
+- Cache: Redis / File
+- Queue: Redis / Database / SQS
+- Frontend: Blade + Alpine.js / Vue.js / React (Inertia)
+- CSS: Tailwind / SASS / Bootstrap
+- Hosting: (e.g. AWS / Forge / DigitalOcean)
+
+## Environments
+| Env | Branch | URL |
+|-----|--------|-----|
+| Production | `main` | https://... |
+| Staging | `staging` | https://... |
+| Dev | `dev` | http://localhost:8000 |
+
+## Key Architectural Decisions
+<!-- Reference conductor/decisions.md for full log -->
+- (e.g. "Service layer pattern — no business logic in controllers or models")
+- (e.g. "API Resources for all JSON responses — no raw array returns")
+- (e.g. "Queue driver: Redis — background jobs for email and image processing")
+
+## External Services & Integrations
+<!-- List third-party APIs, SDKs, or services in use -->
+- (e.g. AWS S3 — file/image storage)
+- (e.g. Stripe — billing)
+- (e.g. Mailgun / SendGrid — email)
+- (e.g. Algolia / Meilisearch — search)
+
+## Performance & Scalability Notes
+<!-- Anything the agent should be aware of to avoid regressions -->
+- (e.g. "Listings query uses raw SQL for performance — don't replace with Eloquent")
+- (e.g. "Images processed via queued job — not synchronously in the request")
+
+## What NOT to Touch Without Discussion
+<!-- Sections that are sensitive or off-limits -->
+- (e.g. "Auth flow — any changes require approval")
+- (e.g. "Payment webhook handler — do not refactor without testing")
+- (e.g. "Database seeders — do not modify production seeds")
