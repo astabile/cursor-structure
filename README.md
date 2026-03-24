@@ -34,6 +34,18 @@ conductor/
 ├── tech-stack.md     ← Exact versions and infra
 ├── workflow.md       ← Dev flow and deployment
 └── decisions.md      ← Architectural decisions log
+
+── MERN only ──────────────────────────────────────
+client/src/           ← React + Vite + TypeScript
+server/src/           ← Express + Node.js + TypeScript
+shared/types/         ← Types shared across client + server
+.env.example          ← Required env vars reference
+
+── Laravel only ───────────────────────────────────
+app/Services/         ← Business logic layer (on top of laravel new)
+app/Repositories/     ← DB query abstraction
+app/Enums/            ← PHP 8.1 enums
+.env.example          ← Required env vars reference
 ```
 
 ## Claude Code → Cursor Mapping
