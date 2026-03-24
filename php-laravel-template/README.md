@@ -8,39 +8,101 @@ Cursor agent setup for **PHP 8.1+ + Laravel + MySQL/PostgreSQL** projects.
 
 Do this once when starting a new project:
 
+- [ ] Run `laravel new project-name` to scaffold the Laravel app
+- [ ] Copy `.cursor/` and `conductor/` folders into the project root
+- [ ] Copy `.env.example` values into Laravel's `.env` and run `php artisan key:generate`
+- [ ] Run `composer install && npm install`
 - [ ] Fill in `conductor/product.md` — what is this product and who uses it?
 - [ ] Fill in `conductor/tech-stack.md` — exact versions, infra, env var keys
 - [ ] Fill in `.cursor/rules/architecture.mdc` — folder structure, key decisions, off-limits areas
 - [ ] Set MCP env vars in `.cursor/mcp.json` (`GITHUB_TOKEN`, `DB_*` vars, `PROJECT_ROOT`)
 - [ ] Log your first decisions in `conductor/decisions.md`
+- [ ] Run `php artisan serve` — http://localhost:8000
 
 ---
 
-## Structure
+## Project Structure
+
+Laravel scaffolds its own structure via `laravel new`. This template adds the following on top:
 
 ```
-.cursor/
-├── settings.json          ← Agent permissions + blocked commands (git commit, push, migrate:fresh...)
-├── mcp.json               ← MCP servers: GitHub, filesystem, MySQL
-├── rules/
-│   ├── core.mdc           ← Non-negotiable agent rules (always applied)
-│   ├── git.mdc            ← Branch strategy + what agent can/cannot do with git
-│   ├── conventions.mdc    ← PHP/Laravel naming, folder structure, PSR-12, strict types
-│   └── architecture.mdc   ← Fill in: stack versions, environments, off-limits areas
-├── skills/
-│   ├── create-controller/     ← Scaffold Controller + Service + FormRequest
-│   ├── create-migration/      ← Generate migration with reversible down() method
-│   ├── create-api-resource/   ← Scaffold API Resource JSON transformer
-│   └── code-review/           ← Review files against project conventions
-└── plugins/
-    └── manifest.json          ← Index of all skills and rules
-
-conductor/
-├── product.md       ← What the product does, target users, goals
-├── tech-stack.md    ← Exact versions, infrastructure, env var keys
-├── workflow.md      ← Dev flow, branch strategy, deployment, review checklist
-└── decisions.md     ← Architectural decisions log (prevents re-debating)
+your-laravel-project/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/       ← Thin — delegate to Services
+│   │   ├── Middleware/
+│   │   ├── Requests/          ← Form Request validation classes
+│   │   └── Resources/         ← API Resource JSON transformers
+│   ├── Models/                ← Eloquent models
+│   ├── Services/              ← ✅ Added — business logic layer
+│   ├── Repositories/          ← ✅ Added — DB query abstraction (optional)
+│   ├── Enums/                 ← ✅ Added — PHP 8.1 enums
+│   ├── Jobs/
+│   ├── Events/
+│   └── Listeners/
+│
+├── database/
+│   ├── migrations/
+│   ├── seeders/
+│   └── factories/
+│
+├── routes/
+│   ├── api.php
+│   └── web.php
+│
+├── resources/views/           ← Blade templates
+│
+├── .cursor/                   ← Cursor agent setup
+│   ├── settings.json          ← Agent permissions + blocked commands
+│   ├── mcp.json               ← MCP servers: GitHub, filesystem, MySQL
+│   ├── rules/                 ← Always-on agent rules
+│   ├── skills/                ← Scaffolding skills + code review
+│   └── plugins/manifest.json  ← Skill and rule index
+│
+├── conductor/                 ← Project context for the agent
+│   ├── product.md
+│   ├── tech-stack.md
+│   ├── workflow.md
+│   └── decisions.md
+│
+└── .env.example               ← Reference for required env vars
 ```
+
+---
+
+## Getting Started
+
+```bash
+# 1. Create a new Laravel project
+laravel new project-name
+cd project-name
+
+# 2. Copy template files into the project
+cp -r /path/to/php-laravel-template/.cursor .
+cp -r /path/to/php-laravel-template/conductor .
+
+# 3. Install dependencies
+composer install
+npm install
+
+# 4. Set up environment
+cp .env.example .env
+php artisan key:generate
+
+# 5. Run migrations
+php artisan migrate
+
+# 6. Start dev server
+php artisan serve
+```
+
+| Command | What it does |
+|---------|-------------|
+| `php artisan serve` | Start dev server — http://localhost:8000 |
+| `php artisan make:model Name -m` | Create model + migration |
+| `php artisan migrate` | Run pending migrations |
+| `php artisan test` | Run test suite |
+| `php artisan route:list` | List all registered routes |
 
 ---
 
